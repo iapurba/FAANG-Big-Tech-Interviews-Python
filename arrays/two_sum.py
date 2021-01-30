@@ -7,12 +7,14 @@ def find_two_sum(nums:list, target:int):
     """
     Return indices of the two numbers that add up to a given target
     """
-    length = len(nums)
-    for i in range(length):
-        num_to_find = target - nums[i]
-        for j in range(i+1, length):
-            if num_to_find == nums[j]:
-                return [i, j]
+    nums_map = {}
+
+    for index, current_map_val in enumerate(nums):
+        if current_map_val in nums_map:
+            return [nums_map[current_map_val], index]
+        else:
+            number_to_find = target - current_map_val
+            nums_map[number_to_find] = index
     return None
 
 
