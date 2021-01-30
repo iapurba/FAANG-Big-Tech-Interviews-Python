@@ -9,11 +9,12 @@ def find_two_sum(nums:list, target:int):
     """
     nums_map = {}
 
-    for index, current_map_val in enumerate(nums):
-        if current_map_val in nums_map:
-            return [nums_map[current_map_val], index]
+    for index, item in enumerate(nums):
+        current_map_val = nums_map.get(item)
+        if current_map_val is not None:
+            return [current_map_val, index]
         else:
-            number_to_find = target - current_map_val
+            number_to_find = target - item
             nums_map[number_to_find] = index
     return None
 
