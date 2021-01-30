@@ -23,7 +23,7 @@ def get_container_with_most_water(heights:list):
 
 
 class TestContainerWithMostWater(unittest.TestCase):
-
+    """Test area of the container with most water"""
     test_cases = [
         ([7,1,2,3,9], 28),
         ([], 0),
