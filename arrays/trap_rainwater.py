@@ -5,26 +5,24 @@ import unittest
 
 def get_trapped_rainwater(heights:list):
     total_water = 0
-    length = len(heights)
+    left = 0
+    right = len(heights) - 1
+    max_left = 0
+    max_right = 0
 
-    for index, current_height in enumerate(heights):
-        max_left = 0
-        max_right = 0
-        left_index = index
-        right_index = index
-
-        while left_index >= 0:
-            max_left = max(max_left, heights[left_index])
-            left_index -= 1
-
-        while right_index < length:
-            max_right = max(max_right, heights[right_index])
-            right_index += 1
-
-        current_water = min(max_left, max_right) - current_height
-
-        if current_water > 0:
-            total_water += current_water
+    while left < right:
+        if heights[left] <= heights[right]:
+            if heights[left] < max_left:
+                total_water += max_left - heights[left]
+            else:
+                max_left = heights[left]
+            left += 1
+        else:
+            if heights[right] < max_right:
+                total_water += max_right - heights[right]
+            else:
+                max_right = heights[right]
+            right -= 1
 
     return total_water
 
