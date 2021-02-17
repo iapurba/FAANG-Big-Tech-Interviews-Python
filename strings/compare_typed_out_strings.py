@@ -32,16 +32,20 @@ def backspace_compare_optimized(S:str, T:str):
                 back_count = 2
                 while back_count > 0:
                     p1 -= 1
+                    print("p1:", p1)
                     back_count -= 1
-                    if S[p1] == "#":
-                        back_count += 2
+                    if p1 > 0:
+                        if S[p1] == "#":
+                            back_count += 2
             if T[p2] == "#":
                 back_count = 2
                 while back_count > 0:
                     p2 -= 1
+                    # print("p2:", p2)
                     back_count -= 1
-                    if T[p2] == "#":
-                        back_count += 2
+                    if p2 > 0:
+                        if T[p2] == "#":
+                            back_count += 2
         else:
             if S[p1] != T[p2]:
                 return False
@@ -53,13 +57,14 @@ def backspace_compare_optimized(S:str, T:str):
 
 class TestBackspaceCompare(unittest.TestCase):
     test_cases = [
-        ("ab#z", "ac#z", True),
-        ("xy#z", "xx#y", False),
-        # ("###", "#", True),
-        ("", "", True),
-        ("Pqr#s", "pqr#s", False),
-        ("12###34", "12##33#4", True),
-        ("same", "same", True),
+        # ("ab#z", "ac#z", True),
+        # ("xy#z", "xx#y", False),
+        ("aaa###a", "aaaa###a", False),
+        ("###", "#", True),
+        # ("", "", True),
+        # ("Pqr#s", "pqr#s", False),
+        # ("12###34", "12##33#4", True),
+        # ("same", "same", True),
     ]
 
     def test_backspace_compare(self):
